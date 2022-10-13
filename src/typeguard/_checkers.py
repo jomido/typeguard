@@ -558,6 +558,9 @@ def check_type_internal(value: Any, annotation: Any, memo: TypeCheckMemo, *, all
         origin_type = annotation
         args = ()
 
+    if origin_type is Any:
+        return
+
     for lookup_func in config.checker_lookup_functions:
         checker = lookup_func(origin_type, args, extras)
         if checker:

@@ -400,6 +400,14 @@ class TestTypedDict:
 
         check_type(value, DummyDict, allow_extra=True)
 
+    def test_typed_dict_nested_any(self):
+        class DummyDict(TypedDict):
+            d: dict[str, Any]
+
+        value = {'d': {'foo': 'bar'}}
+
+        check_type(value, DummyDict)
+
 
 class TestList:
     def test_valid(self):
